@@ -1,66 +1,241 @@
 <!DOCTYPE html>
 <html lang="zh-CN">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>小赵的小笔记</title>
+    <title>EVA STYLE HTML</title>
     <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="music-player.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com/">
+    <link rel="preconnect" href="https://fonts.gstatic.com/" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@500;700;900&family=Noto+Sans+SC:wght@400;500;700&display=swap" rel="stylesheet">
     <!-- 引入 FontAwesome 图标库 (可选，用于社交图标) -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" integrity="sha512-9usAa10IRO0HhonpyAIVpjrylPvoDwiPUiKdWk5t3PyolY1cOd4DSE0Ga+ri4AuTroPR5aQvXU9xC6qOPnzFeg==" crossorigin="anonymous" referrerpolicy="no-referrer" />
 </head>
 <body>
-    <main>
-        <div class="profile-card">
-            <!-- 左边：头像和名字 -->
-            <div class="card-left">
-                <div class="avatar-container">
-                    <!-- 使用占位图，请替换为您的实际头像 -->
-                    <img src="https://q.qlogo.cn/headimg_dl?dst_uin=3177261635&spec=640&img_type=jpg" alt="个人头像" class="avatar">
-                </div>
-                <h1 class="name">EricZhao|小赵</h1>
-                <p class="title">学生 / 摄影爱好者</p>
+    <div class="dna-motion" aria-hidden="true">
+        <svg class="dna-motion-svg" viewBox="0 0 1440 900" preserveAspectRatio="xMidYMid slice">
+            <defs>
+                <linearGradient id="dnaPink" x1="0" y1="0" x2="1" y2="0">
+                    <stop offset="0%" stop-color="#ff58bc"/>
+                    <stop offset="50%" stop-color="#fff1ff"/>
+                    <stop offset="100%" stop-color="#ff92de"/>
+                </linearGradient>
+                <linearGradient id="dnaGreen" x1="0" y1="0" x2="1" y2="0">
+                    <stop offset="0%" stop-color="#86ff53"/>
+                    <stop offset="50%" stop-color="#efffe0"/>
+                    <stop offset="100%" stop-color="#7cf06d"/>
+                </linearGradient>
+                <linearGradient id="dnaCyan" x1="0" y1="0" x2="1" y2="0">
+                    <stop offset="0%" stop-color="#54d9ff"/>
+                    <stop offset="50%" stop-color="#e8ffff"/>
+                    <stop offset="100%" stop-color="#66ddff"/>
+                </linearGradient>
+                <linearGradient id="dnaViolet" x1="0" y1="0" x2="1" y2="0">
+                    <stop offset="0%" stop-color="#bf73ff"/>
+                    <stop offset="50%" stop-color="#ffe7ff"/>
+                    <stop offset="100%" stop-color="#cc8cff"/>
+                </linearGradient>
+                <linearGradient id="dnaRed" x1="0" y1="0" x2="1" y2="0">
+                    <stop offset="0%" stop-color="#ff3f33"/>
+                    <stop offset="50%" stop-color="#ffd4d0"/>
+                    <stop offset="100%" stop-color="#ff4a39"/>
+                </linearGradient>
+                <pattern id="dnaHexOuter" width="24" height="20.8" patternUnits="userSpaceOnUse" patternTransform="scale(0.8)">
+                    <path d="M6 1 L18 1 L23 10.4 L18 19.8 L6 19.8 L1 10.4 Z" fill="none" stroke="rgba(255,255,255,0.25)" stroke-width="1.5"/>
+                    <path d="M18 1 L30 1 L35 10.4 L30 19.8 L18 19.8 L13 10.4 Z" fill="none" stroke="rgba(255,255,255,0.1)" stroke-width="1.5" transform="translate(-12 0)"/>
+                </pattern>
+                <pattern id="dnaHexInner" width="24" height="20.8" patternUnits="userSpaceOnUse" patternTransform="scale(0.5)">
+                    <path d="M6 1 L18 1 L23 10.4 L18 19.8 L6 19.8 L1 10.4 Z" fill="none" stroke="rgba(255,255,255,0.5)" stroke-width="2.5"/>
+                    <path d="M18 1 L30 1 L35 10.4 L30 19.8 L18 19.8 L13 10.4 Z" fill="none" stroke="rgba(255,255,255,0.2)" stroke-width="2.5" transform="translate(-12 0)"/>
+                </pattern>
+                <filter id="dnaGlow" x="-30%" y="-30%" width="160%" height="160%">
+                    <feGaussianBlur stdDeviation="15" result="blur"/>
+                    <feMerge>
+                        <feMergeNode in="blur"/>
+                        <feMergeNode in="SourceGraphic"/>
+                    </feMerge>
+                </filter>
+                <path id="baseWave" d="M -2400 430 C -2200 150 -2000 150 -1800 430 S -1400 710 -1200 430 S -800 150 -600 430 S -200 710 0 430 S 400 150 600 430 S 1000 710 1200 430 S 1600 150 1800 430 S 2200 710 2400 430 S 2800 150 3000 430 S 3400 710 3600 430 S 4000 150 4200 430 S 4600 710 4800 430 S 5200 150 5400 430" />
+            </defs>
+
+            <g opacity="0.82">
+                <g>
+                    <!-- 通过完美整除蜂窝宽度的周期距离，结合正确计算的正弦贝塞尔波长(1200px)，彻底解决跳贴和断层消失现象 -->
+                    <animateTransform attributeName="transform" type="translate" from="0 0" to="-2400 0" dur="14.4s" repeatCount="indefinite" calcMode="linear"/>
+                    
+                    <!-- Violet (Back) -->
+                    <g fill="none" stroke-linecap="butt" stroke-linejoin="round" style="mix-blend-mode: screen;">
+                        <!-- 发光光晕 -->
+                        <use href="#baseWave" stroke="#804d76" stroke-width="100" opacity="0.32" filter="url(#dnaGlow)" />
+                        <!-- 外管底色（半透明遮挡后方管道，形成透明融合效果）-->
+                        <use href="#baseWave" stroke="#000000" stroke-width="86" opacity="0.65" />
+                        <use href="#baseWave" stroke="#804d76" stroke-width="86" opacity="0.5" />
+                        <!-- 外管边缘蜂窝层（颜色淡）-->
+                        <use href="#baseWave" stroke="url(#dnaHexOuter)" stroke-width="86" opacity="0.5" />
+                        
+                        <!-- 中心隔离层 -->
+                        <use href="#baseWave" stroke="#000000" stroke-width="66" opacity="0.75" />
+                        <use href="#baseWave" stroke="#804d76" stroke-width="66" opacity="0.35" />
+                        
+                        <!-- 内管蜂窝层 -->
+                        <use href="#baseWave" stroke="url(#dnaHexInner)" stroke-width="46" opacity="0.8" />
+                        <use href="#baseWave" stroke="#804d76" stroke-width="46" opacity="0.65" />
+                    </g>
+                    
+                    <!-- Cyan (Middle，产生 400px 横向错位交叠) -->
+                    <g fill="none" stroke-linecap="butt" stroke-linejoin="round" transform="translate(400 0)" style="mix-blend-mode: screen;">
+                        <use href="#baseWave" stroke="#82b036" stroke-width="100" opacity="0.32" filter="url(#dnaGlow)" />
+                        <use href="#baseWave" stroke="#000000" stroke-width="86" opacity="0.65" />
+                        <use href="#baseWave" stroke="#82b036" stroke-width="86" opacity="0.5" />
+                        <use href="#baseWave" stroke="url(#dnaHexOuter)" stroke-width="86" opacity="0.5" />
+                        <use href="#baseWave" stroke="#000000" stroke-width="66" opacity="0.75" />
+                        <use href="#baseWave" stroke="#82b036" stroke-width="66" opacity="0.35" />
+                        <use href="#baseWave" stroke="url(#dnaHexInner)" stroke-width="46" opacity="0.8" />
+                        <use href="#baseWave" stroke="#82b036" stroke-width="46" opacity="0.65" />
+                    </g>
+
+                    <!-- Pink (Front，产生 800px 横向错位交叠) -->
+                    <g fill="none" stroke-linecap="butt" stroke-linejoin="round" transform="translate(800 0)" style="mix-blend-mode: screen;">
+                        <use href="#baseWave" stroke="#3492c9" stroke-width="100" opacity="0.32" filter="url(#dnaGlow)" />
+                        <use href="#baseWave" stroke="#000000" stroke-width="86" opacity="0.65" />
+                        <use href="#baseWave" stroke="#3492c9" stroke-width="86" opacity="0.5" />
+                        <use href="#baseWave" stroke="url(#dnaHexOuter)" stroke-width="86" opacity="0.5" />
+                        <use href="#baseWave" stroke="#000000" stroke-width="66" opacity="0.75" />
+                        <use href="#baseWave" stroke="#3492c9" stroke-width="66" opacity="0.35" />
+                        <use href="#baseWave" stroke="url(#dnaHexInner)" stroke-width="46" opacity="0.8" />
+                        <use href="#baseWave" stroke="#3492c9" stroke-width="46" opacity="0.65" />
+                    </g>
+                </g>
+            </g>
+        </svg>
+    </div>
+
+    <main class="eva-shell">
+        <section class="pilot-card">
+            <div class="alert-strip">
+                <span>ENTRY PLUG CONNECTED</span>
+                <span>SYNC RATE: <strong id="sync-rate">88.8%</strong></span>
+                <span>PRIMARY TARGET LOCKED</span>
             </div>
 
-            <!-- 右边：介绍 -->
-            <div class="card-right">
-                <div class="intro-content">
-                    <h2 class="intro-title">关于我</h2>
+            <div class="pilot-grid">
+                <div class="panel-left">
+                    <div class="avatar-container">
+                        <img src="https://iph.href.lu/640x640?text=AVATAR&fg=666666&bg=cccccc" alt="avatar" class="avatar" draggable="false">
+                    </div>
+                    <p class="pilot-id">CHILD 03</p>
+                    <h1 class="pilot-name">NAME</h1>
+                    <p class="pilot-role">BIO</p>
+                    <div class="signal-bars" aria-hidden="true">
+                        <span></span><span></span><span></span><span></span><span></span>
+                    </div>
+                </div>
+
+                <div class="panel-right">
+                    <div class="panel-hud">
+                        <span class="hud-label">NERV PERSONAL DOSSIER</span>
+                        <span class="hud-number">NO. 001</span>
+                    </div>
+                    <h2 class="intro-title">SLOGAN</h2>
                     <p class="intro-text">
-                        你好！这是一个介绍我的小页面
-                        <br><br>
-                        热爱生活，追求技术与艺术的完美融合。在不停地探索世界
-                        <br><br>
-                        "人生如逆旅，我亦是行人。"
+                        INTRODUCTION
                     </p>
-                    
+
+                    <div class="tags">
+                        <span>PHOTOGRAPHY</span>
+                        <span>WEB</span>
+                        <span>STUDY</span>
+                        <span>LIFE LOG</span>
+                    </div>
+
                     <div class="social-links">
-                        <!-- <a href="#" class="social-btn"><i class="fab fa-github"></i> Github</a> -->
-                        <!-- <a href="#" class="social-btn"><i class="fab fa-twitter"></i> Twitter</a> -->
-                        <a href="mailto:ericzhao3366@dingtalk.com" class="social-btn"><i class="far fa-envelope"></i> Email</a>
+                        <a href="mailto:example@example.com" class="social-btn"><i class="far fa-envelope"></i> CONTACT</a>
                     </div>
                 </div>
             </div>
-        </div>
+
+            <div class="corner-deco top-left" aria-hidden="true"></div>
+            <div class="corner-deco bottom-right" aria-hidden="true"></div>
+        </section>
     </main>
 
+    <!-- 底部歌词层 -->
+    <div class="ep-lyrics-wrap">
+        <div class="ep-lyrics-box">
+            <span class="ep-lyrics-tag">LYRIC SYNC</span>
+            <p id="lyrics-text">等待同步指令...</p>
+        </div>
+    </div>
+
+    <!-- 悬浮式插入栓播放器 (右侧竖放) -->
+    <div id="ep-player" class="ep-player vertical">
+        <div class="ep-top">
+            <div class="ep-stripes"></div>
+        </div>
+        <div class="ep-core">
+            <div class="ep-info">
+                <span class="ep-sync">EVA<br><strong>TEST 01</strong></span>
+                <div class="ep-track-wrap">
+                    <span id="song-name" class="ep-track">WAITING</span>
+                </div>
+            </div>
+
+            <div class="ep-controls">
+                <button id="prev-btn" class="ep-btn" title="上一首"><i class="fas fa-backward-step"></i></button>
+                <button id="play-btn" class="ep-btn play-btn" title="播放/暂停"><i class="fas fa-play"></i></button>
+                <button id="next-btn" class="ep-btn" title="下一首"><i class="fas fa-forward-step"></i></button>
+            </div>
+
+            <div class="ep-progress-wrap vertical-progress">
+                <input id="progress" type="range" min="0" max="100" value="0" />
+            </div>
+
+            <div class="ep-side-tools">
+                <button id="vol-toggle-btn" class="ep-btn ep-tools-btn" title="音量"><i id="vol-icon" class="fas fa-volume-high"></i></button>
+                <button id="list-toggle-btn" class="ep-btn ep-tools-btn" title="歌单"><i class="fas fa-list-ul"></i></button>
+            </div>
+
+            <!-- 音量弹出层 -->
+            <div id="ep-vol-wrap" class="ep-vol-wrap">
+                <span class="ep-vol-label">VOL</span>
+                <input id="volume" type="range" min="0" max="100" value="100" title="调节音量" />
+                <span id="volume-value" class="ep-vol-value">100%</span>
+            </div>
+
+            <!-- 歌单与状态弹出层 -->
+            <div id="ep-playlist-wrap" class="ep-playlist-wrap">
+                <div id="status-text" role="status" aria-live="polite" class="ep-status"></div>
+                <ul id="playlist" class="playlist" aria-label="歌曲列表"></ul>
+            </div>
+        </div>
+        <div class="ep-bottom"></div>
+    </div>
     <!-- 底部：备案信息 -->
     <footer class="footer">
         <p>
-            © 2026 EricZhao. All Rights Reserved.
+            © 2026 EricZhao. NERV Terminal Record.
         </p>
-        <p>
-            <!-- 需替换为实际的备案链接和号码 -->
-            <a href="https://beian.miit.gov.cn/" target="_blank" rel="noopener">浙ICP备2026008960号-3</a>
-            <span>|</span>
-            <a href="https://beian.mps.gov.cn/#/query/webSearch?code=33010202005485" rel="noreferrer noopener" target="_blank">
-                <!-- 这里可以用真实的公安图标图片 -->
-                <img src="gongan.png" alt="公安备案" class="footer-icon"> 浙公网安备33010202005485号
-            </a>
-        </p>
+
     </footer>
 
-    <!-- 樱花特效脚本已移除 -->
+    <audio id="audio" preload="metadata"></audio>
+    <script src="music-player.js"></script>
+
+    <script>
+        (function () {
+            const syncRateEl = document.getElementById("sync-rate");
+            let tick = 0;
+
+            function updateDashboard() {
+                tick += 1;
+                const wave = Math.sin(tick * 0.024) * 8.0 + Math.sin(tick * 0.007) * 4.0;
+                const noise = (Math.random() - 0.5) * 2.5;
+                const syncRate = Math.max(50.0, Math.min(99.9, 82.0 + wave + noise));
+                syncRateEl.textContent = syncRate.toFixed(1) + "%";
+            }
+
+            updateDashboard();
+            setInterval(updateDashboard, 600);
+        })();
+    </script>
 </body>
 </html>
-
-

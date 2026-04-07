@@ -1,0 +1,82 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1440 900" preserveAspectRatio="none" role="img" aria-label="EVA inspired background scene">
+  <defs>
+    <linearGradient id="bgGrad" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="#040308"/>
+      <stop offset="100%" stop-color="#09060d"/>
+    </linearGradient>
+  </defs>
+
+  <rect width="1440" height="900" fill="url(#bgGrad)"/>
+  <rect width="1440" height="900" fill="rgba(10,6,14,0.55)"/>
+
+  <g fill="none" stroke="#ff6a31" stroke-width="2.2" opacity="0.58">
+    <path d="M100 0 V900"/>
+    <path d="M0 64 H1440"/>
+    <path d="M0 870 H1440"/>
+    <path d="M180 64 V870"/>
+    <path d="M1160 64 V870"/>
+  </g>
+
+  <g stroke="#ff5a45" stroke-width="1.4" opacity="0.5">
+    <line x1="96" y1="16" x2="96" y2="120"/>
+    <line x1="112" y1="16" x2="112" y2="120"/>
+    <line x1="86" y1="16" x2="122" y2="16"/>
+    <line x1="86" y1="48" x2="122" y2="48"/>
+    <line x1="86" y1="80" x2="122" y2="80"/>
+    <line x1="86" y1="112" x2="122" y2="112"/>
+  </g>
+
+  <g fill="#ff8839" font-family="Orbitron, sans-serif" font-size="18" opacity="0.78">
+    <text x="122" y="22">+6.0</text>
+    <text x="122" y="78">+5.0</text>
+    <text x="122" y="170">+4.0</text>
+    <text x="122" y="262">+3.0</text>
+    <text x="122" y="354">+2.0</text>
+    <text x="122" y="446">+1.0</text>
+    <text x="122" y="538">0.0</text>
+    <text x="122" y="630">-1.0</text>
+    <text x="122" y="722">-2.0</text>
+    <text x="122" y="814">-3.0</text>
+    <text x="190" y="842">-6.0</text>
+    <text x="306" y="842">-5.0</text>
+    <text x="426" y="842">-4.0</text>
+    <text x="546" y="842">-3.0</text>
+    <text x="666" y="842">-2.0</text>
+    <text x="786" y="842">-1.0</text>
+    <text x="906" y="842">+0.0</text>
+    <text x="1026" y="842">+1.0</text>
+    <text x="1146" y="842">+2.0</text>
+    <text x="1266" y="842">+3.0</text>
+    <text x="1386" y="842">+4.0</text>
+  </g>
+
+  <g fill="#ffb14b" font-family="Orbitron, sans-serif" font-size="18" opacity="0.82">
+    <text x="374" y="110">MT-01353</text>
+    <text x="374" y="206">MT-01354</text>
+    <text x="374" y="302">MT-01355</text>
+    <text x="374" y="398">MT-01356</text>
+    <text x="374" y="494">MT-01357</text>
+    <text x="374" y="590">MT-01358</text>
+    <text x="374" y="690">GTGCO10011010</text>
+    <text x="988" y="110">MT-2353</text>
+    <text x="988" y="206">MT-2354</text>
+    <text x="988" y="302">MT-2355</text>
+    <text x="988" y="398">MT-2356</text>
+    <text x="988" y="494">MT-2357</text>
+    <text x="988" y="590">MT-2358</text>
+    <text x="988" y="686">MT-2359</text>
+  </g>
+
+  <g fill="#ff3c30" font-family="Orbitron, sans-serif" font-size="16" opacity="0.88">
+    <text x="1106" y="615" transform="rotate(28 1106 615)">SYNC</text>
+    <text x="1092" y="710" transform="rotate(28 1092 710)">SYNC</text>
+    <text x="1080" y="514" transform="rotate(28 1080 514)">SYNC</text>
+    <text x="258" y="612" transform="rotate(-18 258 612)">BORDER-LINE</text>
+    <text x="596" y="160" transform="rotate(-18 596 160)">BORDER-LINE</text>
+  </g>
+
+  <g fill="#ffcf7a" font-family="Orbitron, sans-serif" font-size="14" opacity="0.4">
+    <text x="560" y="420">Monitored Target Subject : EVA-01 Assigned Pilot</text>
+    <text x="560" y="455">Verifying Neurological Linkup : Calculating Synchronization Rate</text>
+  </g>
+</svg>

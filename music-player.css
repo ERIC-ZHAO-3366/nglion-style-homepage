@@ -1,0 +1,528 @@
+/* EVA Entry Plug - Floating Music Player (Vertical Right Middle) */
+
+.ep-player.vertical {
+    position: fixed;
+    right: 20px;
+    top: 50%;
+    transform: translateY(-50%);
+    animation: floatY 6s ease-in-out infinite;
+    z-index: 9999;
+    display: flex;
+    flex-direction: column;
+    width: 60px;
+    border-radius: 30px;
+    box-shadow: -10px 15px 35px rgba(0,0,0,0.6), 0 0 20px rgba(224, 127, 42, 0.4);
+    font-family: "Orbitron", "Noto Sans SC", sans-serif;
+    user-select: none;
+    -webkit-user-select: none;
+}
+
+@keyframes floatY {
+    0% { transform: translateY(calc(-50% - 10px)); }
+    50% { transform: translateY(calc(-50% + 10px)); }
+    100% { transform: translateY(calc(-50% - 10px)); }
+}
+
+.ep-top {
+    height: 70px;
+    border-radius: 30px 30px 0 0;
+    background: linear-gradient(90deg, #db8b43 0%, #faad5d 30%, #c46416 100%);
+    position: relative;
+    overflow: hidden;
+    border-bottom: 2px solid #85370d;
+    box-shadow: inset 5px 0 5px rgba(255,255,255,0.4), inset -5px 0 5px rgba(0,0,0,0.3);
+}
+
+/* 红色棋盘格条纹（竖向模式：使用 135 度切角） */
+.ep-stripes {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    height: 25px;
+    background: repeating-linear-gradient(135deg, #a41b2b 0, #a41b2b 6px, #421c27 6px, #421c27 12px);
+    box-shadow: inset 0 5px 12px rgba(0,0,0,0.4);
+}
+
+.ep-core {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 12px;
+    padding: 16px 0;
+    background: linear-gradient(90deg, #ffffff 0%, #eef0f3 40%, #c1c5cc 100%);
+    color: #111;
+    box-shadow: inset 6px 0 6px rgba(255,255,255,1), inset -6px 0 10px rgba(0,0,0,0.15);
+    position: relative;
+}
+
+/* 金属拼接长缝 (竖向居中) */
+.ep-core::after {
+    content: '';
+    position: absolute;
+    left: 0; right: 0; top: 45%;
+    height: 1px;
+    background: rgba(0,0,0,0.15);
+    box-shadow: 0 1px 0 rgba(255,255,255,0.7);
+    pointer-events: none;
+}
+
+.ep-bottom {
+    height: 40px;
+    border-radius: 0 0 30px 30px;
+    background: linear-gradient(90deg, #db8b43 0%, #faad5d 30%, #c46416 100%);
+    border-top: 2px solid #85370d;
+    box-shadow: inset 5px 0 5px rgba(255,255,255,0.4), inset -5px 0 5px rgba(0,0,0,0.3);
+}
+
+.ep-info {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 100%;
+    text-align: center;
+}
+
+.ep-sync {
+    font-size: 0.55rem;
+    color: #d84500;
+    font-weight: 800;
+    letter-spacing: 0.05em;
+    line-height: 1.1;
+    margin-bottom: 6px;
+    text-shadow: 0 1px 0 rgba(255,255,255,0.8);
+}
+
+.ep-track-wrap {
+    height: 75px;
+    width: 25px;
+    display: flex;
+    justify-content: center;
+    align-items: center; /* 默认垂直居中 */
+    overflow: hidden;
+}
+
+.ep-track {
+    font-size: 0.8rem;
+    font-weight: 700;
+    color: #222;
+    writing-mode: vertical-rl;
+    text-orientation: mixed;
+    white-space: nowrap;
+    /* 默认不滚动，如果过长再通过 JS 加类来滚动 */
+}
+
+.ep-track.scroll {
+    /* 长度超过容器时，从顶部开始对齐，以便正确滚动到底部 */
+    align-self: flex-start;
+    /* 从顶部滚动到底部 */
+    animation: marquee-v 4s linear infinite alternate;
+}
+
+@keyframes marquee-v {
+    0%, 10% { transform: translateY(0); } /* 停留 10% 时间方便阅读头部 */
+    90%, 100% { transform: translateY(calc(75px - 100%)); } /* 底部也停留一下 */
+}
+
+.ep-controls {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    z-index: 2;
+}
+
+.ep-btn {
+    width: 32px;
+    height: 32px;
+    border-radius: 50%;
+    border: 1px solid #b2b8bd;
+    background: linear-gradient(135deg, #f5f6f8 0%, #caccce 100%);
+    box-shadow: 0 3px 6px rgba(0,0,0,0.2), inset 0 2px 3px rgba(255,255,255,0.8);
+    color: #333;
+    font-size: 0.75rem;
+    font-family: inherit;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    outline: none;
+    transition: all 0.1s;
+    font-weight: bold;
+}
+
+.ep-btn:active {
+    box-shadow: inset 0 3px 6px rgba(0,0,0,0.3);
+    background: #c3c7cb;
+    transform: scale(0.92);
+}
+
+.ep-btn.play-btn {
+    color: #cc4100;
+    font-size: 0.95rem;
+    width: 36px;
+    height: 36px;
+    border: 1px solid #cc4100;
+    box-shadow: 0 4px 8px rgba(216,69,0,0.2), inset 0 2px 3px rgba(255,255,255,1);
+}
+
+.vertical-progress {
+    height: 80px;
+    width: 14px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 2;
+    margin: 6px 0;
+}
+
+.vertical-progress input[type="range"] {
+    width: 80px;  /* 原始条长 */
+    /* 使用 CSS 变量统一控制轨道与滑块尺寸 */
+    --track-h: 4px;
+    --thumb-h: 12px;
+    height: var(--thumb-h);
+    margin: 0;
+    accent-color: #d84500;
+    background: transparent;
+    border: none;
+    border-radius: 2px;
+    transform: rotate(90deg); /* 改变为 90deg 使 0 位于顶部，实现从上到下填充 */
+    outline: none;
+    cursor: pointer;
+    -webkit-appearance: none;
+    appearance: none;
+}
+
+.vertical-progress input[type="range"]::-webkit-slider-runnable-track {
+    height: var(--track-h);
+    /* 通过 CSS 变量动态背景色填充（亮色部分和灰色未播放部分） */
+    background: linear-gradient(90deg, 
+        rgba(255, 122, 31, 1) 0%, 
+        rgba(255, 122, 31, 1) var(--progress, 0%), 
+        rgba(102, 102, 102, 0.6) var(--progress, 0%)
+    );
+    border-radius: 3px;
+    /* 轨道居中 */
+    margin-top: calc((var(--thumb-h) - var(--track-h)) / 2);
+}
+
+.vertical-progress input[type="range"]::-moz-range-track {
+    height: var(--track-h);
+    background: linear-gradient(90deg, 
+        rgba(255, 122, 31, 1) 0%, 
+        rgba(255, 122, 31, 1) var(--progress, 0%), 
+        rgba(102, 102, 102, 0.6) var(--progress, 0%)
+    );
+    border-radius: 3px;
+}
+
+.vertical-progress input[type="range"]::-webkit-slider-thumb {
+    -webkit-appearance: none;
+    appearance: none;
+    width: var(--thumb-h);
+    height: var(--thumb-h);
+    border-radius: 50%;
+    background: #d84500;
+    border: 2px solid #fff;
+    cursor: pointer;
+    box-shadow: 0 0 5px rgba(0,0,0,0.3);
+    /* 让滑块中心对齐轨道中心 */
+    margin-top: calc((var(--track-h) - var(--thumb-h)) / 2);
+}
+
+.vertical-progress input[type="range"]::-moz-range-thumb {
+    width: var(--thumb-h);
+    height: var(--thumb-h);
+    border-radius: 50%;
+    background: #d84500;
+    border: 2px solid #fff;
+    cursor: pointer;
+    box-shadow: 0 0 5px rgba(0,0,0,0.3);
+    margin-top: calc((var(--track-h) - var(--thumb-h)) / 2);
+}
+
+.ep-side-tools {
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+    z-index: 2;
+    margin-top: 4px;
+}
+
+.ep-tools-btn {
+    font-size: 0.8rem;
+    background: linear-gradient(135deg, #f5f6f8 0%, #d4d7db 100%);
+    color: #111;
+    width: 30px;
+    height: 30px;
+}
+
+/* 独立浮层：歌单与音量弹出框 */
+.ep-playlist-wrap, .ep-vol-wrap {
+    position: absolute;
+    right: 76px; /* 相对右侧停靠，居中 */
+    background: rgba(12, 15, 23, 0.94);
+    border: 1px solid rgba(224, 127, 42, 0.4);
+    border-radius: 12px;
+    box-shadow: -8px 12px 35px rgba(0,0,0,0.5);
+    display: none;
+    color: #eef4ff;
+    backdrop-filter: blur(8px);
+    -webkit-backdrop-filter: blur(8px);
+    z-index: 10000;
+}
+
+.ep-playlist-wrap {
+    top: 50%;
+    transform: translateY(-50%);
+    width: 280px;
+    max-height: 400px;
+    padding: 12px;
+    flex-direction: column;
+}
+
+.ep-vol-wrap {
+    bottom: 20px;
+    height: 160px;
+    width: 60px;
+    padding: 12px 0 8px 0;
+    display: none;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: center;
+    background: linear-gradient(180deg, rgba(16, 20, 24, 0.96) 0%, rgba(28, 14, 6, 0.98) 100%);
+    border: 1px solid rgba(255, 122, 31, 0.5);
+    border-left: 3px solid #ff7a1f;
+    border-right: 3px solid #ff7a1f;
+    border-radius: 2px;
+    box-shadow: 0 0 12px rgba(255, 122, 31, 0.5), inset 0 0 15px rgba(255, 122, 31, 0.2);
+    position: absolute;
+    right: 76px;
+    z-index: 10000;
+}
+
+/* 顶部与底部机械警示装饰条 */
+.ep-vol-wrap::before {
+    content: '';
+    position: absolute;
+    top: 0; left: 0; right: 0;
+    height: 6px;
+    background: repeating-linear-gradient(135deg, #ff4500 0, #ff4500 4px, #222 4px, #222 8px);
+}
+.ep-vol-wrap::after {
+    content: '';
+    position: absolute;
+    bottom: 0; left: 0; right: 0;
+    height: 6px;
+    background: repeating-linear-gradient(135deg, #ff4500 0, #ff4500 4px, #222 4px, #222 8px);
+}
+
+.ep-vol-wrap input[type="range"] {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%) rotate(270deg);
+    width: 90px;
+    /* 使用 CSS 变量统一控制轨道与滑块尺寸，便于精确居中计算 */
+    --track-h: 6px;
+    --thumb-h: 10px;
+    height: calc(var(--thumb-h));
+    margin: 0;
+    accent-color: #ff7a1f;
+    /* 动态渐变背景，--vol-percent通过JS设置，实现填满部分发亮 */
+    background: linear-gradient(90deg, 
+        rgba(255, 69, 0, 1) 0%, 
+        rgba(255, 139, 51, 1) var(--vol-percent, 100%), 
+        rgba(255, 69, 0, 0.1) var(--vol-percent, 100%)
+    );
+    border: 1px solid rgba(255, 122, 31, 0.5);
+    border-radius: 0;
+    outline: none;
+    cursor: pointer;
+    -webkit-appearance: none;
+    appearance: none;
+    /* 让轨道整体的发光强度和发光半径跟随 --vol-val 的比例缩放 */
+    box-shadow: inset 0 0 4px rgba(0,0,0,0.8), 0 0 calc(var(--vol-val, 100) * 0.12px) calc(var(--vol-val, 100) * 0.05px) rgba(255, 80, 0, calc(var(--vol-val, 100) * 0.01));
+}
+
+.ep-vol-wrap input[type="range"]::-webkit-slider-runnable-track {
+    height: var(--track-h);
+    background: transparent;
+    border-radius: 0;
+    /* 将轨道在输入框内垂直居中（当未旋转时为上下居中） */
+    margin-top: calc((calc(var(--thumb-h)) - var(--track-h)) / 2);
+}
+
+.ep-vol-wrap input[type="range"]::-moz-range-track {
+    height: 6px;
+    background: transparent;
+    border-radius: 0;
+}
+
+.ep-vol-wrap input[type="range"]::-webkit-slider-thumb {
+    -webkit-appearance: none;
+    appearance: none;
+    width: 20px;
+    height: var(--thumb-h);
+    border-radius: 2px;
+    background: #fff;
+    border: 2px solid #ff4500;
+    cursor: pointer;
+    box-shadow: 0 0 10px #ff4500;
+    /* 精确居中：根据 track 与 thumb 高度计算偏移（可跨浏览器稳定） */
+    margin-top: calc((var(--track-h) - var(--thumb-h)) / 2);
+}
+
+.ep-vol-wrap input[type="range"]::-moz-range-thumb {
+    width: 20px;
+    height: var(--thumb-h);
+    border-radius: 2px;
+    background: #fff;
+    border: 2px solid #ff4500;
+    cursor: pointer;
+    box-shadow: 0 0 10px #ff4500;
+    /* FireFox 通常自动居中，但在保守浏览器/渲染差异下仍使用相同偏移计算 */
+    margin-top: calc((var(--track-h) - var(--thumb-h)) / 2);
+}
+
+.ep-vol-label {
+    position: absolute;
+    top: 10px; /* 顶部警示条下方，调节此值可微调位置 */
+    left: 50%;
+    transform: translateX(-50%);
+    font-size: 0.65rem;
+    font-weight: 800;
+    color: #ff9945;
+    letter-spacing: 1px;
+    text-shadow: 0 0 6px rgba(255, 122, 31, 0.9);
+    z-index: 3;
+}
+
+/* 音量百分比文本，EVA风格的橙色机甲数值 */
+.ep-vol-value {
+    font-family: "Orbitron", "Noto Sans SC", sans-serif;
+    font-size: 0.75rem;
+    font-weight: 900;
+    color: #ffbd7a;
+    letter-spacing: 0.05em;
+    text-shadow: 0 0 8px rgba(255, 69, 0, 0.8), 0 0 2px #ff7a1f;
+    margin-top: auto;
+    margin-bottom: 8px; /* 避开底部警示条 */
+    z-index: 2;
+}
+
+.ep-playlist-wrap.show, .ep-vol-wrap.show {
+    display: flex;
+}
+
+.ep-playlist-wrap.show {
+    animation: slide-in-y 0.2s ease-out both;
+}
+
+.ep-vol-wrap.show {
+    animation: slide-in-x 0.2s ease-out both;
+}
+
+@keyframes slide-in-y {
+    from { opacity: 0; transform: translate(15px, -50%); }
+    to { opacity: 1; transform: translate(0, -50%); }
+}
+
+@keyframes slide-in-x {
+    from { opacity: 0; transform: translateX(15px); }
+    to { opacity: 1; transform: translateX(0); }
+}
+
+.ep-status {
+    font-size: 0.72rem;
+    text-align: center;
+    margin-bottom: 8px;
+    color: #a2afbf;
+    line-height: 1.3;
+}
+
+.ep-status.status-error { color: #ff5a5a; }
+.ep-status.status-ok { color: #b7ff7a; }
+
+.playlist { list-style: none; overflow-y: auto; padding-right: 5px; margin: 0; }
+.playlist::-webkit-scrollbar { width: 4px; }
+.playlist::-webkit-scrollbar-thumb { background: rgba(216,69,0,0.6); border-radius: 2px; }
+.playlist li {
+    display: grid;
+    grid-template-columns: auto 1fr;
+    gap: 10px;
+    align-items: center;
+    padding: 10px 8px;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+    cursor: pointer;
+    transition: background 0.15s;
+}
+.playlist li:hover { background: rgba(255, 255, 255, 0.08); }
+.playlist li.active {
+    background: rgba(224, 127, 42, 0.15);
+    border-radius: 6px;
+    border-color: transparent;
+}
+.playlist li .index { color: #f5a25d; font-size: 0.72rem; font-family: "Orbitron", sans-serif; }
+.playlist li .name { display: block; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; font-size: 0.85rem; color: #fff;}
+.playlist li .artist { display: block; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; font-size: 0.68rem; color: #8893a4; }
+
+/* NERV 风格底部歌词模块 */
+.ep-lyrics-wrap {
+    position: fixed;
+    bottom: 110px; /* 抬高以避免遮挡底部版权信息栏 */
+    left: 50%;
+    transform: translateX(-50%);
+    z-index: 9998;
+    pointer-events: none; /* 防误触 */
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    transition: opacity 0.5s ease;
+    opacity: 0; /* 默认透明，播放时显示 */
+}
+
+.ep-lyrics-box {
+    background: linear-gradient(135deg, rgba(8, 10, 15, 0.85) 0%, rgba(18, 12, 10, 0.9) 100%);
+    border: 1px solid rgba(216, 69, 0, 0.6);
+    padding: 10px 24px 12px;
+    border-radius: 4px;
+    box-shadow: 0 5px 20px rgba(216, 69, 0, 0.25), inset 0 0 8px rgba(216, 69, 0, 0.2);
+    text-align: center;
+    position: relative;
+    clip-path: polygon(10px 0, 100% 0, calc(100% - 10px) 100%, 0 100%);
+    min-width: 250px;
+    backdrop-filter: blur(4px);
+    -webkit-backdrop-filter: blur(4px);
+}
+
+.ep-lyrics-tag {
+    position: absolute;
+    top: 0; left: 18px;
+    background: #cc4100;
+    color: #fff;
+    font-size: 0.5rem;
+    padding: 1px 5px;
+    font-family: "Orbitron", sans-serif;
+    letter-spacing: 0.1em;
+}
+
+#lyrics-text {
+    font-size: 1rem;
+    color: #ffdaba;
+    font-weight: 500;
+    margin: 0;
+    margin-top: 10px;
+    font-family: "Noto Sans SC", sans-serif;
+    text-shadow: 0 0 10px rgba(216, 69, 0, 0.6);
+    white-space: pre-wrap;
+    line-height: 1.5;
+    transition: opacity 0.2s;
+}
+
+@media (max-width: 640px) {
+    .ep-player.vertical { transform: scale(0.85) translateY(-50%); right: 0; }
+    .ep-lyrics-box { min-width: 200px; padding: 10px 15px 12px; }
+    #lyrics-text { font-size: 0.85rem; }
+    .ep-playlist-wrap { right: 60px; width: 250px; }
+}
